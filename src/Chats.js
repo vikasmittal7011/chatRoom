@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getDatabase, ref, push, set, onChildAdded } from "firebase/database";
 
 function Chats(props) {
-  const { name } = props;
+  const { name, setUser } = props;
   const [chats, setChats] = useState([]);
   const [chatMessage, setChatMessage] = useState("");
 
@@ -43,9 +43,22 @@ function Chats(props) {
 
   return (
     <div>
-      <h1>
-        User: <span className="text-danger">{name}</span>
-      </h1>
+      <div className="d-flex justify-content-between my-3">
+        <h1>
+          User: <span className="text-danger">{name}</span>
+        </h1>
+        <h1>
+          <button
+            className="btn btn-warning btn-lg"
+            onClick={() => {
+              localStorage.clear();
+              setUser("");
+            }}
+          >
+            Logout
+          </button>
+        </h1>
+      </div>
       <div id="chat" className="chat-container">
         {chats.map((chat, i) => (
           <div
