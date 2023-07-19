@@ -1,5 +1,11 @@
+import ChatRoom from "./ChatRoom";
+
 function App() {
-  return <div>Hello</div>;
+  return (
+    <div className="container">
+      <ChatRoom />
+    </div>
+  );
 }
 
 export default App;
